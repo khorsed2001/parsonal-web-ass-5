@@ -58,3 +58,36 @@ document.getElementById("apply").addEventListener("click", function () {
         discountField.classList.add("hidden");
     }
 });
+
+document.getElementById("next").addEventListener('click', function () {
+    const inputname = document.getElementById("name").value;
+    const inputnumber = document.getElementById("number").value;
+    const inputemail = document.getElementById("email").value;
+
+    if (seatQuan !== 0 && inputname.trim() !== '' && inputnumber.trim() !== '' && inputemail.trim() !== '') {
+        document.location = '#my_modal_8';
+    } else {
+        alert("Please book a seat and fill all information.");
+    }
+});
+
+function nextBtnDisAndEnable() {
+    const nextButton = document.getElementById("next");
+    const inputname = document.getElementById("name").value;
+    const inputnumber = document.getElementById("number").value;
+    const inputemail = document.getElementById("email").value;
+
+    nextButton.disabled = !(seatQuan > 0 && inputname.trim() !== '' && inputnumber.trim() !== '' && inputemail.trim() !== '');
+}
+
+
+document.getElementById("name").addEventListener('input', nextBtnDisAndEnable);
+document.getElementById("number").addEventListener('input', nextBtnDisAndEnable);
+document.getElementById("email").addEventListener('input', nextBtnDisAndEnable);
+
+nextBtnDisAndEnable();
+
+
+document.getElementById("buytick").addEventListener("click", function () {
+    document.location = "#my_modal_9"
+})
